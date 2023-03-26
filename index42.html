@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github API</title>
+</head>
+<body>
+    <div class="container">
+        <div class="search-area">
+            <input type="text" id="username">
+            <button onclick="getDeets()">Give details</button>
+
+        </div>
+        <div class="output-container">
+            <div class="profile" id="profile">
+
+            </div>
+            <div class="username">
+                <h1 id="name"></h1>
+
+            </div>
+            <div class="info">
+
+            </div>
+            <ul>
+                <li id="followers"></li>
+                <li id="following"></li>
+            </ul>
+
+        </div>
+
+    </div>
+    <script>
+    // let demo=10;
+    // console.log(`value=${demo}`)
+//     fetch('api_url').then( function(){
+//         return data.json()
+//     }).then(function(dummy){
+// console.log(dummy.dob)
+//     })
+
+//     .catch(function(e){
+//         console.log(e)
+//     })
+// https://api.github.com/users/sanjanagupta21
+
+
+
+function getDeets(){
+    const name=document.getElementById('username').value;
+
+    fetch('https://api.github.com/users/anarayanan86')
+    .then(function(data){
+        return data.json()
+    }).then(function(res){
+        document.getElementById('name').innerHTML=res.name;
+        
+        document.getElementById('followers').innerHTML=res.followers;
+        document.getElementById('following').innerHTML=res.following;
+        document.getElementById('profile').innerHTML= 
+        `<img src="${res.avatar_url}"/>`
+    })
+
+}
+
+    </script>
+    
+</body>
+</html>
